@@ -62,6 +62,19 @@ struct sockaddr {
   char sa_data[14];
 };
 
+#if !defined(sa_family_t) && !defined(SA_FAMILY_T_DEFINED)
+typedef u8_t sa_family_t;
+#endif
+
+struct sockaddr_storage {
+  u8_t        s2_len;
+  sa_family_t ss_family;
+  char        s2_data1[2];
+  u32_t       s2_data2[3];
+#if LWIP_IPV6
+  u32_t       s2_data3[3];
+#endif /* LWIP_IPV6 */
+};
 #ifndef socklen_t
 #  define socklen_t u32_t
 #endif

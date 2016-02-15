@@ -442,7 +442,7 @@ etharp_send_ip(struct netif *netif, struct pbuf *p, struct eth_addr *src, struct
 static err_t
 update_arp_entry(struct netif *netif, ip_addr_t *ipaddr, struct eth_addr *ethaddr, u8_t flags)
 {
-  s8_t i;
+  u8_t i;
   LWIP_ASSERT("netif->hwaddr_len == ETHARP_HWADDR_LEN", netif->hwaddr_len == ETHARP_HWADDR_LEN);
   LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE, ("update_arp_entry: %"U16_F".%"U16_F".%"U16_F".%"U16_F" - %02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F":%02"X16_F"\n",
     ip4_addr1_16(ipaddr), ip4_addr2_16(ipaddr), ip4_addr3_16(ipaddr), ip4_addr4_16(ipaddr),
@@ -546,7 +546,7 @@ etharp_add_static_entry(ip_addr_t *ipaddr, struct eth_addr *ethaddr)
 err_t
 etharp_remove_static_entry(ip_addr_t *ipaddr)
 {
-  s8_t i;
+  u8_t i;
   LWIP_DEBUGF(ETHARP_DEBUG | LWIP_DBG_TRACE, ("etharp_remove_static_entry: %"U16_F".%"U16_F".%"U16_F".%"U16_F"\n",
     ip4_addr1_16(ipaddr), ip4_addr2_16(ipaddr), ip4_addr3_16(ipaddr), ip4_addr4_16(ipaddr)));
 
@@ -583,7 +583,7 @@ s8_t
 etharp_find_addr(struct netif *netif, ip_addr_t *ipaddr,
          struct eth_addr **eth_ret, ip_addr_t **ip_ret)
 {
-  s8_t i;
+  u8_t i;
 
   LWIP_ASSERT("eth_ret != NULL && ip_ret != NULL",
     eth_ret != NULL && ip_ret != NULL);
@@ -958,7 +958,7 @@ etharp_query(struct netif *netif, ip_addr_t *ipaddr, struct pbuf *q)
 {
   struct eth_addr * srcaddr = (struct eth_addr *)netif->hwaddr;
   err_t result = ERR_MEM;
-  s8_t i; /* ARP entry index */
+  u8_t i; /* ARP entry index */
 
   /* non-unicast address? */
   if (ip_addr_isbroadcast(ipaddr, netif) ||

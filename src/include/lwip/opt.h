@@ -311,7 +311,7 @@
  * (requires NO_SYS==0)
  */
 #ifndef MEMP_NUM_SYS_TIMEOUT
-#define MEMP_NUM_SYS_TIMEOUT            3
+#define MEMP_NUM_SYS_TIMEOUT            5
 #endif
 
 /**
@@ -791,7 +791,7 @@
  * transport.
  */
 #ifndef LWIP_DNS
-#define LWIP_DNS                        0
+#define LWIP_DNS                        1
 #endif
 
 /** DNS maximum number of entries to maintain locally. */
